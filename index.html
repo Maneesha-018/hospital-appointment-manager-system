@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>📋 Book Appointment</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:linear-gradient(to right,#89f7fe,#66a6ff);
+}
+
+.container{
+display:flex;
+height:100vh;
+align-items:center;
+}
+
+.left{
+width:50%;
+text-align:center;
+}
+
+.left img{
+width:70%;
+}
+
+.right{
+width:50%;
+}
+
+form{
+background:white;
+padding:30px;
+width:400px;
+margin:auto;
+border-radius:15px;
+box-shadow:0px 0px 20px grey;
+}
+
+input,select{
+
+width:100%;
+padding:10px;
+margin:8px 0;
+
+}
+
+button{
+
+padding:12px;
+width:100%;
+background:#2980b9;
+color:white;
+border:none;
+font-size:18px;
+border-radius:8px;
+cursor:pointer;
+
+}
+
+button:hover{
+background:#1f6692;
+}
+
+#qrBox{
+display:none;
+text-align:center;
+}
+
+</style>
+
+
+<script>
+
+function showQR(){
+
+let payment=document.getElementById("payment").value;
+
+if(payment=="Online")
+
+document.getElementById("qrBox").style.display="block";
+
+else
+
+document.getElementById("qrBox").style.display="none";
+
+}
+
+</script>
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<div class="left">
+
+<img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png">
+
+</div>
+
+
+<div class="right">
+
+
+<form method="POST" action="/register">
+
+
+<h2>📋 Book Appointment</h2>
+
+
+<input type="text" name="name" placeholder="👤 Name" required>
+
+<input type="number" name="age" placeholder="🎂 Age" required>
+
+<input type="text" name="weight" placeholder="⚖ Weight" required>
+
+<input type="text" name="bp" placeholder="💓 BP" required>
+
+
+<select name="doctor" required>
+
+<option>Select Doctor</option>
+
+<option>Dr Sharma (MBBS)</option>
+
+<option>Dr Khan (Neurologist)</option>
+
+<option>Dr Verma (Cardiologist)</option>
+
+<option>Dr Gupta (Gynecologist)</option>
+
+<option>Dr Singh (Dermatologist)</option>
+
+</select>
+
+
+<input type="datetime-local" name="date" required>
+
+
+<input type="text" name="problem" placeholder="💊 Problem">
+
+
+<select name="payment" id="payment" onchange="showQR()" required>
+
+<option>Select Payment Mode</option>
+
+<option>Cash</option>
+
+<option>Online</option>
+
+</select>
+
+
+<div id="qrBox">
+
+<h3>Scan QR for Payment</h3>
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=HospitalPayment">
+
+</div>
+
+
+<br>
+
+<button type="submit">Submit Appointment</button>
+
+
+</form>
+
+
+</div>
+
+
+</div>
+
+
+</body>
+</html>

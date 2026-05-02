@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Patient Records</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:linear-gradient(to right,#c2e9fb,#a1c4fd);
+}
+
+
+/* TITLE */
+
+.title{
+
+text-align:center;
+font-size:36px;
+margin-top:20px;
+color:#2c3e50;
+
+}
+
+
+/* SEARCH BOX */
+
+.search-box{
+
+text-align:center;
+margin-top:10px;
+
+}
+
+.search-box input{
+
+padding:12px;
+width:280px;
+border-radius:8px;
+border:1px solid grey;
+
+}
+
+.search-box button{
+
+padding:12px 25px;
+background:#2980b9;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+
+}
+
+
+/* MAIN CONTAINER */
+
+.container{
+
+display:flex;
+align-items:center;
+justify-content:center;
+margin-top:30px;
+
+}
+
+
+/* DOCTOR IMAGE */
+
+.left img{
+
+width:420px;   /* PHOTO SIZE INCREASED */
+
+}
+
+
+/* TABLE STYLE */
+
+table{
+
+width:750px;
+margin-left:40px;
+background:white;
+border-collapse:collapse;
+box-shadow:0px 0px 18px grey;
+
+}
+
+
+/* HEADER CENTER */
+
+th{
+
+background:#2980b9;
+color:white;
+padding:14px;
+text-align:center;
+
+}
+
+
+/* DATA CENTER */
+
+td{
+
+padding:12px;
+text-align:center;
+
+}
+
+
+/* ROW COLOR */
+
+tr:nth-child(even){
+
+background:#f2f2f2;
+
+}
+
+
+/* DELETE BUTTON */
+
+.delete-btn{
+
+color:red;
+text-decoration:none;
+font-size:20px;
+
+}
+
+
+/* BACK BUTTON */
+
+.back{
+
+text-align:center;
+margin-top:40px;
+
+}
+
+.back button{
+
+padding:14px 35px;
+background:#2c3e50;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- TITLE -->
+
+<div class="title">
+
+📊 Patient Appointment Records
+
+</div>
+
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<form action="/search" method="POST">
+
+<input name="keyword" placeholder="🔍 Search patient">
+
+<button>Search</button>
+
+</form>
+
+</div>
+
+
+
+<!-- IMAGE + TABLE -->
+
+<div class="container">
+
+
+<div class="left">
+
+<img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png">
+
+</div>
+
+
+<table>
+
+<tr>
+
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+<th>Weight</th>
+<th>BP</th>
+<th>Doctor</th>
+<th>Date</th>
+<th>Problem</th>
+<th>Payment</th>
+<th>Delete</th>
+
+</tr>
+
+
+{% for row in patients %}
+
+<tr>
+
+<td>{{row[0]}}</td>
+<td>{{row[1]}}</td>
+<td>{{row[2]}}</td>
+<td>{{row[3]}}</td>
+<td>{{row[4]}}</td>
+<td>{{row[5]}}</td>
+<td>{{row[6]}}</td>
+<td>{{row[7]}}</td>
+<td>{{row[8]}}</td>
+
+<td>
+
+<a class="delete-btn" href="/delete/{{row[0]}}">❌</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+
+</div>
+
+
+<!-- BACK BUTTON -->
+
+<div class="back">
+
+<a href="/">
+
+<button>🏠 Back to Home</button>
+
+</a>
+
+</div>
+
+
+</body>
+</html>
